@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Welcome to my React E-commerce App!
 
 🛒 Explore my fully-featured e-commerce application built with React and powered by Redux Toolkit. This app provides a seamless shopping experience with a range of features to enhance your online shopping journey.
@@ -15,3 +16,7 @@ Key Features:
 🔍 Item Search: Can't find the item you want? Utilize my search functionality to quickly locate products using the FakeStore API.
 
 Clone the repository today and start building your dream e-commerce application with React, Redux Toolkit, and the power of real-time cart management! Happy coding! 🚀
+=======
+# ShopFusion
+Explore my fully-featured e-commerce application built with React and powered by Redux Toolkit.
+>>>>>>> origin/main
