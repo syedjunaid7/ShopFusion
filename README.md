@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Welcome to my React E-commerce App!
 
 🛒 Explore my fully-featured e-commerce application built with React and powered by Redux Toolkit. This app provides a seamless shopping experience with a range of features to enhance your online shopping journey.
