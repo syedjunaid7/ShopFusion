@@ -1,0 +1,28 @@
+.footerMain{
+    background-color: rgba(69, 8, 1, 0.061);
+
+}
+.footer{
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 19px;
+    text-align: center;
+    padding: 4.5rem;
+    .footerBox{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding-top: 1rem;
+        gap: 1.5rem;
+        font-weight: 900;
+        p{
+            cursor: pointer;
+            transition: all 0.4s ease-in-out;
+
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
+    }
+}

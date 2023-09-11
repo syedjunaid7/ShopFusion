@@ -46,13 +46,7 @@ export default function () {
             )}
           </Link>
         </div>
-        <div className="mob-iconBox" onClick={() => setMobileMenu(!mobileMenu)}>
-            {mobileMenu ? (
-              <RxCross2 className="ham" />
-            ) : (
-              <HiOutlineMenuAlt3 className="ham" />
-            )}
-          </div>
+
       </div>
     </nav>
   );

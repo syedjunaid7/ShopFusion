@@ -1,0 +1,39 @@
+.newsBox {
+  margin: 0 auto;
+  max-width: 1200px;
+  text-align: center;
+  line-height: 1rem;
+  padding: 6rem 0;
+
+  .mailIcon {
+    font-size: 1.7rem;
+    margin-bottom: 1rem;
+    font-weight: 100;
+    color: rgba(0, 0, 0, 0.512);
+  }
+  .inputForm {
+    display: flex;
+    justify-content: center;
+    input {
+      width: 60%;
+      padding: 0.4rem;
+      border: 0.5px solid rgba(0, 0, 0, 0.512);
+      background-color: rgba(69, 8, 1, 0.061);
+    }
+    .sub {
+      padding: 0 0.5rem;
+      border: 0.5px solid rgba(0, 0, 0, 0.512);
+      cursor: pointer;
+      transition: all 0.4s ease-in-out;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+@media (max-width: 700) {
+  .newsBox {
+    padding: 1rem;
+  }
+}

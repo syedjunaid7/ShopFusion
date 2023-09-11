@@ -1,11 +1,18 @@
-.productsWrapper {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+.main-section{
   margin: 0 auto;
   max-width: 1200px;
-  padding: 0 19px;
+  padding: 5rem 0;
+  h2{
+    text-align: center;
+    padding-bottom: 2rem;
+  }
+}
+.productsWrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
   gap: 2rem;
+  padding: 2rem 7rem;
 }
 .card-container {
   width: 300px;
@@ -85,5 +92,21 @@
   svg {
     width: 20px;
     height: 20px;
+  }
+}
+@media (max-width : 700px){
+  .main-section{
+    padding: 4rem 1rem;
+    h2{
+      font-size: 1.9rem;
+    }
+  }
+  .productsWrapper {
+    padding: 1rem 0;
+    justify-content: center;
+    .card-container{
+      width: 100%;
+      height: auto;
+    }
   }
 }
