@@ -3,7 +3,7 @@ import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Provider } from "react-redux";
 import Home from "./pages/Home";
-import Cart from "./pages/Cart";
+// import Cart from "./pages/Cart";
 import Navbar from "./components/Navbar/Navbar";
 import store from "./store/store";
 function App() {
@@ -14,7 +14,7 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/cart" element={<Cart />} />
+            {/* <Route path="/cart" element={<Cart />} /> */}
           </Routes>
         </BrowserRouter>
       </Provider>
