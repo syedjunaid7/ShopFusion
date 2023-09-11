@@ -1,0 +1,82 @@
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: white;
+}
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 0;
+  position: sticky;
+  top: 0;
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 4px;
+    color: black;
+  }
+  .link-navBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .navLink {
+      margin-right: 2rem;
+      position: relative;
+
+      .nav-icons {
+        font-size: 1.3rem;
+      }
+      .cartCount {
+        position: absolute;
+        left: 0.8rem;
+        top: -0.8rem;
+        background-color: red;
+        color: white;
+        border-radius: 50%;
+        padding: 0.1rem 0.4rem;
+        font-size: 0.7rem;
+        font-weight: 600;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  .mob-iconBox {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-container {
+    .link-navBox {
+      display: none;
+      .navLink {
+        margin-right: 0;
+      }
+    }
+    .mob-link-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding-bottom: 5rem;
+      gap: 2rem;
+      height: 90vh;
+      width: 100%;
+      position: absolute;
+      top: 100%;
+      background: white;
+      font-size: 1.5rem;
+    }
+    .mob-iconBox {
+      display: block;
+      .ham {
+        font-size: 1.3rem;
+      }
+    }
+  }
+}

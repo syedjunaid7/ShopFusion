@@ -1,3 +1,89 @@
-img{
-    width: 8%;
+.productsWrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 19px;
+  gap: 2rem;
+}
+.card-container {
+  width: 300px;
+  height: 350px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  padding: 1em;
+  position: relative;
+  overflow: visible;
+  border: 1px solid rgba(0, 0, 0, 0.388);
+  &:hover {
+    border: 2px solid rgba(0, 0, 0, 0.388);
+    cursor: pointer;
+  }
+  .card-img {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    height: 40%;
+    width: 70%;
+    border-radius: 0.5rem;
+    transition: 0.3s ease;
+    img {
+      width: 90%;
+      height: 120%;
+      border-radius: 0.5rem;
+    }
+    &:hover {
+      transform: translateY(-25%);
+      box-shadow: rgba(226, 196, 63, 0.25) 0px 13px 47px -5px,
+        rgba(180, 71, 71, 0.3) 0px 8px 16px -8px;
+    }
+  }
+
+  .card-info {
+    padding-top: 25%;
+  }
+
+  .card-footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
+  }
+
+  /* Text */
+  .text-title {
+    font-weight: 900;
+    font-size: 1.2em;
+    line-height: 1.5;
+  }
+
+  .text-body {
+    font-size: 0.9em;
+    padding-bottom: 10px;
+  }
+
+  /* Button */
+  .card-button {
+    border: 1px solid #252525;
+    display: flex;
+    padding: 0.3em;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: 0.3s ease-in-out;
+
+    &:hover {
+      border: 1px solid #ffcaa6;
+      background-color: #ffcaa6;
+    }
+  }
+
+  /* SVG */
+  svg {
+    width: 20px;
+    height: 20px;
+  }
 }
