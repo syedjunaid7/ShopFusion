@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
 import "./Products.scss";
-import { add } from "../../store/cartSlice";
+import { addToCart } from "../../store/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../../store/productSlice";
+import {  fetchProducts } from "../../store/productSlice";
 import { STATUSES } from "../../store/productSlice";
+
 
 export default function Products() {
   const dispatch = useDispatch();
   const { data: products, status } = useSelector((state) => state.product);
-
+  
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
-
   const handleAdd = (product) => {
-    dispatch(add(product));
+    dispatch(addToCart(product));
   };
 
   if (status === STATUSES.LOADING) {

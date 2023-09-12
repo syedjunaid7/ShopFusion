@@ -1,45 +1,40 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import "./Navbar.scss";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFromCart, getCartTotal } from "../../store/cartSlice"; // Import getCartTotal
+
 import { BiSearch } from "react-icons/bi";
 import { BiUserCircle } from "react-icons/bi";
 import { BiShoppingBag } from "react-icons/bi";
 import { RxCross2 } from "react-icons/rx";
-import { remove } from "../../store/cartSlice";
+import { AiFillPlusSquare } from "react-icons/ai";
+import { AiFillMinusSquare } from "react-icons/ai";
+import { PiTrashFill } from "react-icons/pi";
 import emptyCart from "../../assets/empty-cart.png";
-export default function () {
+
+export default function Navbar() {
   const products = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const handleRemove = (productId) => {
-    dispatch(remove(productId));
+    dispatch(removeFromCart(productId));
   };
 
-  //it basically subscribe useData
   const items = useSelector((state) => state.cart);
+  useEffect(() => {
+    dispatch(getCartTotal());
+  }, [products]);
 
   const [mobileMenu, setMobileMenu] = useState(false);
   const [show, handleShow] = useState(false);
-  // const handleScroll = () => {
-  //   if (window.scrollY > 0) {
-  //     handleShow(true);
-  //   } else {
-  //     handleShow(false);
-  //   }
-  // };
-  // useEffect(() => {
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []);
+
   return (
     <>
       <div className={`${show ? "backFilter" : ""}`}> </div>
       <div className={`cartBox ${show ? "openCart" : "cartBox"}`}>
         <div className="shoppingBagTop">
           <h5>
-            Shopping Bag <b>({items.length})</b>
+            Shopping Bag <b>({items.totalQuantity})</b>
           </h5>
           <RxCross2 className="crossIcon" onClick={() => handleShow(!show)} />
         </div>
@@ -51,7 +46,7 @@ export default function () {
               <button onClick={() => handleShow(!show)}>Keep Browsing</button>
             </div>
           ) : (
-            products.map((product) => (
+            products.items.map((product) => (
               <div key={product.id} className="cartDetail">
                 <img
                   src={product.image}
@@ -59,18 +54,34 @@ export default function () {
                   className="cartImg"
                 />
                 <div className="descriptionBox">
-                  <h3 className="productF">{product.title}</h3>
-                  <h5 className="priceF">{product.price}</h5>
-                  <button
-                    className="removeBtn"
-                    onClick={() => handleRemove(product.id)}
-                  >
-                    Remove
-                  </button>
+                  <div className="left-des">
+                    <h3 className="productF">{product.title}</h3>
+                    <div className="inDecBox">
+                      <AiFillPlusSquare className="plusBtn" />
+                      <h5>{product.quantity}</h5>
+                      <AiFillMinusSquare className="plusBtn" />
+                    </div>
+                  </div>
+                  <div className="right-des">
+                    <h5 className="priceF">₹{product.price}</h5>
+                    <PiTrashFill
+                      className="removeBtn"
+                      onClick={() => handleRemove(product.id)}
+                    />
+                  </div>
                 </div>
               </div>
             ))
           )}
+        </div>
+        <div className="totalBox">
+          <h3>Subtotal</h3>
+          <div className="totalBoxIn">
+            <div>
+              <strong>₹{items.totalPrice}</strong> 
+            </div>
+            <button>Checkout</button>
+          </div>
         </div>
       </div>
 
@@ -89,7 +100,7 @@ export default function () {
               {items.length === 0 ? (
                 ""
               ) : (
-                <div className="cartCount">{items.length}</div>
+                <div className="cartCount">{items.totalQuantity}</div>
               )}
             </Link>
           </div>
