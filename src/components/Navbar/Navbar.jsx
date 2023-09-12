@@ -7,6 +7,7 @@ import { BiUserCircle } from "react-icons/bi";
 import { BiShoppingBag } from "react-icons/bi";
 import { RxCross2 } from "react-icons/rx";
 import { remove } from "../../store/cartSlice";
+import emptyCart from "../../assets/empty-cart.png";
 export default function () {
   const products = useSelector((state) => state.cart);
   const dispatch = useDispatch();
@@ -43,10 +44,20 @@ export default function () {
           <RxCross2 className="crossIcon" onClick={() => handleShow(!show)} />
         </div>
         <div className="cartIn">
-          {products.map((product) => (
-            <>
+          {products.length === 0 ? (
+            <div className="empty-cartBox">
+              <img src={emptyCart} alt="cart-image" className="cart-image" />
+              <h3>Your cart is empty</h3>
+              <button onClick={() => handleShow(!show)}>Keep Browsing</button>
+            </div>
+          ) : (
+            products.map((product) => (
               <div key={product.id} className="cartDetail">
-                <img src={product.image} className="cartImg" />
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className="cartImg"
+                />
                 <div className="descriptionBox">
                   <h3 className="productF">{product.title}</h3>
                   <h5 className="priceF">{product.price}</h5>
@@ -58,8 +69,8 @@ export default function () {
                   </button>
                 </div>
               </div>
-            </>
-          ))}
+            ))
+          )}
         </div>
       </div>
 

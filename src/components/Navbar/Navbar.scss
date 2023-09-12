@@ -61,14 +61,14 @@ nav {
   }
 }
 
-.openCart{
-  right: 0  !important;
+.openCart {
+  right: 0 !important;
 }
-.backFilter{
+.backFilter {
   position: fixed;
-  backdrop-filter:blur(10px);
+  backdrop-filter: blur(10px);
   background: rgba(0, 0, 0, 0.393);
-  width: 100% ;
+  width: 100%;
   height: 100%;
   top: 0;
   z-index: 3;
@@ -84,13 +84,13 @@ nav {
   padding: 3rem;
   transition: all 0.4s ease;
 
-  .shoppingBagTop{
+  .shoppingBagTop {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    .crossIcon{
+    .crossIcon {
       font-size: 1.3rem;
-      &:hover{
+      &:hover {
         cursor: pointer;
         transform: scale(1.3);
         transition: all 0.4s ease;
@@ -103,7 +103,21 @@ nav {
     align-items: center;
     flex-direction: column;
     height: 55vh;
-    overflow-y:scroll;
+    overflow-y: scroll;
+    .empty-cartBox {
+      padding: 1rem;
+      text-align: center;
+      button {
+        padding: 0 0.5rem;
+        border: 0.5px solid rgba(0, 0, 0, 0.512);
+        cursor: pointer;
+        transition: all 0.4s ease-in-out;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
   }
   .cartDetail {
     padding: 1rem 0;
@@ -111,9 +125,8 @@ nav {
     justify-content: space-between;
     align-items: center;
     width: 20rem;
-    
   }
-  .descriptionBox{
+  .descriptionBox {
     width: 13rem;
   }
   .cartImg {
@@ -135,7 +148,7 @@ nav {
 }
 
 @media (max-width: 768px) {
-  .cartBox{
+  .cartBox {
     width: 100%;
     padding: 2rem 1rem;
   }
