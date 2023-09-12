@@ -2,7 +2,12 @@ import "./Navbar.scss";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromCart, getCartTotal } from "../../store/cartSlice"; // Import getCartTotal
+import {
+  decreaseItemQuantity,
+  increaseItemQuantity,
+  removeFromCart,
+  getCartTotal,
+} from "../../store/cartSlice"; // Import getCartTotal
 
 import { BiSearch } from "react-icons/bi";
 import { BiUserCircle } from "react-icons/bi";
@@ -39,7 +44,7 @@ export default function Navbar() {
           <RxCross2 className="crossIcon" onClick={() => handleShow(!show)} />
         </div>
         <div className="cartIn">
-          {products.length === 0 ? (
+          {products.items.length === 0 ? (
             <div className="empty-cartBox">
               <img src={emptyCart} alt="cart-image" className="cart-image" />
               <h3>Your cart is empty</h3>
@@ -57,9 +62,15 @@ export default function Navbar() {
                   <div className="left-des">
                     <h3 className="productF">{product.title}</h3>
                     <div className="inDecBox">
-                      <AiFillPlusSquare className="plusBtn" />
+                      <AiFillPlusSquare
+                        className="plusBtn"
+                        onClick={() => dispatch(increaseItemQuantity(product.id))}
+                      />
                       <h5>{product.quantity}</h5>
-                      <AiFillMinusSquare className="plusBtn" />
+                      <AiFillMinusSquare
+                        className="plusBtn"
+                        onClick={() => dispatch(decreaseItemQuantity(product.id))}
+                      />
                     </div>
                   </div>
                   <div className="right-des">
@@ -78,7 +89,7 @@ export default function Navbar() {
           <h3>Subtotal</h3>
           <div className="totalBoxIn">
             <div>
-              <strong>₹{items.totalPrice}</strong> 
+              <strong>₹{items.totalPrice}</strong>
             </div>
             <button>Checkout</button>
           </div>
@@ -97,7 +108,7 @@ export default function Navbar() {
             </Link>
             <Link className="navLink" onClick={() => handleShow(!show)}>
               <BiShoppingBag className="nav-icons" />
-              {items.length === 0 ? (
+              {products.items.length === 0 ? (
                 ""
               ) : (
                 <div className="cartCount">{items.totalQuantity}</div>
