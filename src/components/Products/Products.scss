@@ -7,6 +7,21 @@
     padding-bottom: 2rem;
   }
 }
+.categories{
+  display: flex;
+  justify-content: space-evenly;
+  padding-top:2rem;
+  flex-wrap: wrap;
+  h5{
+    &:hover {
+      background-color: #25252525;
+      cursor: pointer;
+    }
+  }
+  .active{
+    border-bottom: 2px solid rgba(0, 0, 0, 0.388);
+  }
+}
 .productsWrapper {
   display: flex;
   justify-content: space-between;
@@ -92,6 +107,11 @@
   svg {
     width: 20px;
     height: 20px;
+  }
+}
+@media (max-width : 1000px){
+  .categories{
+    gap: 1rem;
   }
 }
 @media (max-width : 700px){
