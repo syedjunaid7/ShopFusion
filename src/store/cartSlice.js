@@ -4,8 +4,6 @@ const loadCartFromLocalStorage = () => {
   const cartData = localStorage.getItem("cart");
   return cartData ? JSON.parse(cartData) : { items: [], singleItem: [], totalPrice: 0, totalQuantity: 0 };
 };
-
-
 const cartSlice = createSlice({
   name: "cart",
   initialState:loadCartFromLocalStorage(),
