@@ -7,7 +7,7 @@ import Navbar from "./components/Navbar/Navbar";
 import store from "./store/store";
 import ProductFull from "./components/ProductFull/ProductFull";
 import Footer from "./components/Footer/Footer";
-import ScrollToTop from "./Components/ScrollToTop";
+import ScrollToTop from "./components/ScrollToTop";
 import News from "./components/NewsSection/News";
 function App() {
   return (
