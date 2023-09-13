@@ -7,7 +7,7 @@ import {
   increaseItemQuantity,
   removeFromCart,
   getCartTotal,
-} from "../../store/cartSlice"; // Import getCartTotal
+} from "../../store/cartSlice";
 
 import { BiSearch } from "react-icons/bi";
 import { BiUserCircle } from "react-icons/bi";

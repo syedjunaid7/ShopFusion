@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./Products.scss";
-import { addToCart } from "../../store/cartSlice";
+import { addToCart, goToProduct } from "../../store/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../store/productSlice";
 import { STATUSES } from "../../store/productSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function Products() {
+  const navigate = useNavigate();
   const [wholeData, setWholeData] = useState([]);
   const [activeCategory, setActiveCategory] = useState("all"); // Initialize with "all"
   const dispatch = useDispatch();
@@ -22,7 +24,10 @@ export default function Products() {
   const handleAdd = (product) => {
     dispatch(addToCart(product));
   };
-
+const handleGoTo = (product) => {
+  dispatch(goToProduct(product));
+  navigate('/productfull');
+}
   const selectCategory = (category) => {
     setActiveCategory(category);
     if (category === "all") {
@@ -48,50 +53,38 @@ export default function Products() {
       return title;
     }
     return words.slice(0, maxWords).join(" ") + " ...";
-  };
-
+  }; 
   return (
     <section>
       <div className="main-section">
         <h2>Welcome to the Store</h2>
         <h3>Products</h3>
         <div className="categories">
-          <h5
-            onClick={() => selectCategory("all")}
-            className={activeCategory === "all" ? "active" : ""}
-          >
-            All
-          </h5>
-          <h5
-            onClick={() => selectCategory("men's clothing")}
-            className={activeCategory === "men's clothing" ? "active" : ""}
-          >
-            Mens Wear
-          </h5>
-          <h5
-            onClick={() => selectCategory("women's clothing")}
-            className={activeCategory === "women's clothing" ? "active" : ""}
-          >
-            Womens Wear
-          </h5>
-          <h5
-            onClick={() => selectCategory("jewelery")}
-            className={activeCategory === "jewelery" ? "active" : ""}
-          >
-            Jewelry
-          </h5>
-          <h5
-            onClick={() => selectCategory("electronics")}
-            className={activeCategory === "electronics" ? "active" : ""}
-          >
-            Electronics
-          </h5>
+          {[
+            "all",
+            "men's clothing",
+            "women's clothing",
+            "jewelery",
+            "electronics",
+          ].map((category) => (
+            <h5
+              key={category}
+              onClick={() => selectCategory(category)}
+              className={activeCategory === category ? "active" : ""}
+            >
+              {category}
+            </h5>
+          ))}
         </div>
         <div className="productsWrapper">
           {wholeData.map((product, index) => (
             <div className="card-container" key={product.id}>
               <div className="card-img">
-                <img src={product.image} alt="products-images" />
+                <img
+                  src={product.image}
+                  alt="products-images"
+                  onClick={() => handleGoTo(product)}
+                />
               </div>
               <div className="card-info">
                 <p className="text-title">{truncateTitle(product.title, 3)}</p>
