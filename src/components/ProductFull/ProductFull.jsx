@@ -1,8 +1,10 @@
 import React from "react";
 import "./ProductFull.scss";
 import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../store/cartSlice";
 export default function ProductFull() {
   const products = useSelector((state) => state.cart);
+  const product = useSelector((state) => state.product)
   const dispatch = useDispatch();
   const handleAdd = (product) => {
     dispatch(addToCart(product));

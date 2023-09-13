@@ -8,7 +8,6 @@ import {
   removeFromCart,
   getCartTotal,
 } from "../../store/cartSlice";
-
 import { BiSearch } from "react-icons/bi";
 import { BiUserCircle } from "react-icons/bi";
 import { BiShoppingBag } from "react-icons/bi";
@@ -48,7 +47,7 @@ const navigate = useNavigate()
             </Link>
             <Link className="navLink" onClick={() => handleShow(!show)}>
               <BiShoppingBag className="nav-icons" />
-              {products.items.length === 0 ? (
+              {products?.items.length === 0 ? (
                 ""
               ) : (
                 <div className="cartCount">{items.totalQuantity}</div>
