@@ -1,6 +1,6 @@
 import "./Navbar.scss";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   decreaseItemQuantity,
@@ -32,10 +32,31 @@ export default function Navbar() {
 
   const [mobileMenu, setMobileMenu] = useState(false);
   const [show, handleShow] = useState(false);
-
+const navigate = useNavigate()
   return (
     <>
       <div className={`${show ? "backFilter" : ""}`}> </div>
+      <nav>
+        <div className="nav-container">
+          <span className="logo" onClick={() => navigate('/')}>ShopFusion</span>
+          <div className={mobileMenu ? "mob-link-nav" : "link-navBox"}>
+            <Link className="navLink" to="/">
+              <BiSearch className="nav-icons" />
+            </Link>
+            <Link className="navLink">
+              <BiUserCircle className="nav-icons" />
+            </Link>
+            <Link className="navLink" onClick={() => handleShow(!show)}>
+              <BiShoppingBag className="nav-icons" />
+              {products.items.length === 0 ? (
+                ""
+              ) : (
+                <div className="cartCount">{items.totalQuantity}</div>
+              )}
+            </Link>
+          </div>
+        </div>
+      </nav>
       <div className={`cartBox ${show ? "openCart" : "cartBox"}`}>
         <div className="shoppingBagTop">
           <h5>
@@ -64,12 +85,16 @@ export default function Navbar() {
                     <div className="inDecBox">
                       <AiFillPlusSquare
                         className="plusBtn"
-                        onClick={() => dispatch(increaseItemQuantity(product.id))}
+                        onClick={() =>
+                          dispatch(increaseItemQuantity(product.id))
+                        }
                       />
                       <h5>{product.quantity}</h5>
                       <AiFillMinusSquare
                         className="plusBtn"
-                        onClick={() => dispatch(decreaseItemQuantity(product.id))}
+                        onClick={() =>
+                          dispatch(decreaseItemQuantity(product.id))
+                        }
                       />
                     </div>
                   </div>
@@ -95,28 +120,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-
-      <nav>
-        <div className="nav-container">
-          <span className="logo">ShopFusion</span>
-          <div className={mobileMenu ? "mob-link-nav" : "link-navBox"}>
-            <Link className="navLink" to="/">
-              <BiSearch className="nav-icons" />
-            </Link>
-            <Link className="navLink">
-              <BiUserCircle className="nav-icons" />
-            </Link>
-            <Link className="navLink" onClick={() => handleShow(!show)}>
-              <BiShoppingBag className="nav-icons" />
-              {products.items.length === 0 ? (
-                ""
-              ) : (
-                <div className="cartCount">{items.totalQuantity}</div>
-              )}
-            </Link>
-          </div>
-        </div>
-      </nav>
     </>
   );
 }
