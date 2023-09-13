@@ -41,11 +41,26 @@
   .producfullMain {
     flex-direction: column;
     align-items: center;
+    img{
+        width: 55%;
+        border: 1px solid;
+        padding: 1rem;
+    }
     .producfullContent{
         padding: 2rem 1rem;
+        h2{
+            font-size: 1.3rem;
+        }
+        h5{
+            font-size: 0.9rem;
+          }
+          h4{
+            font-size: 1rem;
+          }
+          button{
+            font-size: 0.9rem;
+          }
     }
   }
-  h5{
-    font-size: 1.1rem;
-  }
+
 }
