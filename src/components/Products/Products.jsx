@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 export default function Products() {
   const navigate = useNavigate();
   const [wholeData, setWholeData] = useState([]);
-  const [activeCategory, setActiveCategory] = useState("all"); // Initialize with "all"
+  const [activeCategory, setActiveCategory] = useState("all"); 
   const dispatch = useDispatch();
   const { data: products, status } = useSelector((state) => state.product);
 
@@ -77,7 +77,7 @@ const handleGoTo = (product) => {
           ))}
         </div>
         <div className="productsWrapper">
-          {wholeData.map((product, index) => (
+          {wholeData.map((product) => (
             <div className="card-container" key={product.id}>
               <div className="card-img">
                 <img

@@ -35,7 +35,7 @@ const navigate = useNavigate()
   return (
     <>
       <div className={`${show ? "backFilter" : ""}`}> </div>
-      <nav>
+      <nav id="top">
         <div className="nav-container">
           <span className="logo" onClick={() => navigate('/')}>ShopFusion</span>
           <div className={mobileMenu ? "mob-link-nav" : "link-navBox"}>
@@ -47,7 +47,7 @@ const navigate = useNavigate()
             </Link>
             <Link className="navLink" onClick={() => handleShow(!show)}>
               <BiShoppingBag className="nav-icons" />
-              {products?.items.length === 0 ? (
+              {products.items.length === 0  ? (
                 ""
               ) : (
                 <div className="cartCount">{items.totalQuantity}</div>
@@ -64,6 +64,7 @@ const navigate = useNavigate()
           <RxCross2 className="crossIcon" onClick={() => handleShow(!show)} />
         </div>
         <div className="cartIn">
+        
           {products.items.length === 0 ? (
             <div className="empty-cartBox">
               <img src={emptyCart} alt="cart-image" className="cart-image" />
