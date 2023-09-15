@@ -9,6 +9,7 @@ import ProductFull from "./components/ProductFull/ProductFull";
 import Footer from "./components/Footer/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import News from "./components/NewsSection/News";
+import CheckOut from "./pages/CheckOut/CheckOut";
 function App() {
   return (
     <div className="App">
@@ -19,6 +20,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/productfull" element={<ProductFull />} />
+            <Route path="/checkout" element={<CheckOut />} />
           </Routes>
           <News />
           <Footer />
