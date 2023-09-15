@@ -7,20 +7,19 @@ import { goToProduct } from "../../store/cartSlice";
 export default function Search({ inputValue, setInputValue }) {
   const [searchedData, setSearchData] = useState([]);
   const [isSearchBoxVisible, setIsSearchBoxVisible] = useState(false);
-
-  const searchBoxRef = useRef(null); // Create a ref for the searchBox div
-
+  const searchBoxRef = useRef(null);
   const { data: products, status } = useSelector((state) => state.product);
+  
   useEffect(() => {
     const filterData = products.filter((item) => {
       return item.title.toLowerCase().includes(inputValue.toLowerCase());
     });
     if (inputValue) {
       setSearchData(filterData);
-      setIsSearchBoxVisible(true); // Show the searchBox when there is input
+      setIsSearchBoxVisible(true);
     } else {
       setSearchData([]);
-      setIsSearchBoxVisible(false); // Hide the searchBox when there is no input
+      setIsSearchBoxVisible(false);
     }
   }, [inputValue, products]);
 
@@ -31,28 +30,31 @@ export default function Search({ inputValue, setInputValue }) {
     navigate("/productfull");
     setSearchData([]);
     setInputValue("");
-    setIsSearchBoxVisible(false); // Close the searchBox when an item is clicked
+    setIsSearchBoxVisible(false);
   };
 
-  // Add an event listener to the document to close the searchBox when clicking outside
   useEffect(() => {
     function handleClickOutside(event) {
-      if (searchBoxRef.current && !searchBoxRef.current.contains(event.target)) {
+      if (
+        searchBoxRef.current &&
+        !searchBoxRef.current.contains(event.target)
+      ) {
         setIsSearchBoxVisible(false);
       }
     }
 
-    // Bind the event listener
     document.addEventListener("mousedown", handleClickOutside);
-    
-    // Unbind the event listener on component unmount
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
   return (
-    <div className={isSearchBoxVisible ? "searchBox" : "hide"} ref={searchBoxRef}>
+    <div
+      className={isSearchBoxVisible ? "searchBox" : "hide"}
+      ref={searchBoxRef}
+    >
       {searchedData.map((product) => (
         <div
           className="searchBoxImg"
