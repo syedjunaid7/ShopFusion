@@ -30,14 +30,14 @@ nav {
     align-items: center;
     justify-content: center;
     .search{
-      position: relative;
       transition: all 0.4s ease;
       margin-right: 2rem;
       padding: 0 0.2rem;
     }
     .search-icon{
       position: absolute;
-      right:3.45rem;
+      right:2.1rem;
+      top: 0.3rem;
       background-color: white;
       width: 2rem;
     }
@@ -90,11 +90,19 @@ nav {
 @media (max-width: 768px) {
   .nav-container {
     padding: 1rem 2rem;
+    flex-direction: column;
+    gap: 0.5rem;
     .logo {
       font-size: 1.2rem;
     }
     .link-navBox {
       gap: 0.6rem;
+      .search-icon{
+        right: 0.3rem;
+      }
+      .search{
+        margin-right: 0;
+      }
       .navLink {
         margin-right: 0;
         .nav-icons {

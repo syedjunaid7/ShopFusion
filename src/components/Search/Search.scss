@@ -1,3 +1,6 @@
+.hide{
+    display: none;
+}
 .searchBox{
     position: fixed;
     top: 10;
@@ -27,4 +30,10 @@
 }
 .searchImg{
     width: 2rem;
+}
+@media (max-width: 768px) {
+    .searchBox{
+        width: 100%;
+        right: auto;
+    }
 }

@@ -9,7 +9,7 @@ import Cart from "../../pages/Cart/Cart";
 import Search from "../Search/Search";
 
 export default function Navbar() {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const products = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const items = useSelector((state) => state.cart);
@@ -32,15 +32,15 @@ export default function Navbar() {
             ShopFusion
           </span>
           <div className={mobileMenu ? "mob-link-nav" : "link-navBox"}>
-
-            <input
-              className="search"
-              placeholder="search your item"
-              onChange={handleInput}
-              value={inputValue}
-            />
-
-            <BiSearch className="search-icon" />
+            <div style={{position:"relative"}}>
+              <input
+                className="search"
+                placeholder="search your item"
+                onChange={handleInput}
+                value={inputValue}
+              />
+              <BiSearch className="search-icon" />
+            </div>
             <Link className="navLink" onClick={() => handleShow(!show)}>
               <BiShoppingBag className="nav-icons" />
               {products.items.length === 0 ? (
@@ -52,7 +52,7 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
-      <Search inputValue={inputValue} setInputValue = {setInputValue}/>
+      <Search inputValue={inputValue} setInputValue={setInputValue} />
       <Cart show={show} handleShow={handleShow} />
     </>
   );
