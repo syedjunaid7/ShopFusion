@@ -1,8 +1,11 @@
 import React from "react";
 import "./News.scss";
 import { GoMail } from "react-icons/go";
+import Banner from "../Banner/Banner";
 export default function News() {
   return (
+    <>
+    <Banner />
     <section className="newsBox">
       <GoMail className="mailIcon"/>
       <h4>SUBSCRIBE TO OUR NEWSLETTER</h4>
@@ -12,5 +15,7 @@ export default function News() {
         <button className="sub">Subscribe</button>
       </div>
     </section>
+    </>
+
   );
 }

@@ -1,10 +1,9 @@
 import React from 'react'
-import "./CheckOut.scss"
-export default function 
-() {
+
+export default function ExploreAll() {
   return (
     <div>
-        
+       
     </div>
   )
 }

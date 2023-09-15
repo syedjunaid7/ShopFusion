@@ -5,40 +5,52 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../store/productSlice";
 import { STATUSES } from "../../store/productSlice";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Products() {
   const navigate = useNavigate();
   const [wholeData, setWholeData] = useState([]);
-  const [activeCategory, setActiveCategory] = useState("all"); 
+  const [activeCategory, setActiveCategory] = useState("men's clothing");
   const dispatch = useDispatch();
   const { data: products, status } = useSelector((state) => state.product);
 
   useEffect(() => {
     dispatch(fetchProducts());
-    
   }, []);
 
   useEffect(() => {
-    setWholeData(products);
+    const mensCateg = products.filter((item) => {
+      return item.category === "men's clothing"
+    })
+    setWholeData(mensCateg);
   }, [products]);
 
   const handleAdd = (product) => {
+    toast.success('Item Added!', {
+      position: "top-center",
+      autoClose: 200,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      });
     dispatch(addToCart(product));
   };
-const handleGoTo = (product) => {
-  dispatch(goToProduct(product));
-  navigate('/productfull');
-}
+  const handleGoTo = (product) => {
+    dispatch(goToProduct(product));
+    navigate("/productfull");
+  };
   const selectCategory = (category) => {
     setActiveCategory(category);
-    if (category === "all") {
-      setWholeData(products);
-    } else {
+
       const updatedItems = products.filter((item) => {
         return item.category === category;
       });
       setWholeData(updatedItems);
-    }
+    
   };
 
   if (status === STATUSES.LOADING) {
@@ -54,7 +66,7 @@ const handleGoTo = (product) => {
       return title;
     }
     return words.slice(0, maxWords).join(" ") + " ...";
-  }; 
+  };
   return (
     <section>
       <div className="main-section">
@@ -62,7 +74,6 @@ const handleGoTo = (product) => {
         <h3>Products</h3>
         <div className="categories">
           {[
-            "all",
             "men's clothing",
             "women's clothing",
             "jewelery",
@@ -114,6 +125,18 @@ const handleGoTo = (product) => {
           ))}
         </div>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={100}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </section>
   );
 }

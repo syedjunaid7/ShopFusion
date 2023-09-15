@@ -72,10 +72,12 @@ const cartSlice = createSlice({
     decreaseItemQuantity(state, action) {
       const itemToDecrease = state.items.find(
         (item) => item.id === action.payload
-      );
-
+      );   
       if (itemToDecrease && itemToDecrease.quantity > 1) {
         itemToDecrease.quantity -= 1;
+        localStorage.setItem("cart", JSON.stringify(state));
+      } else if (itemToDecrease && itemToDecrease.quantity === 1) {
+        state.items = state.items.filter((item) => item.id !== action.payload);
         localStorage.setItem("cart", JSON.stringify(state));
       }
     },
