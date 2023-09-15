@@ -28,8 +28,16 @@ export default function ProductFull() {
       localStorage.setItem("category", JSON.stringify(updatedItems));
     }
   }, []);
+  
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   const handleGoTo = (item) => {
     dispatch(goToProduct(item));
+    scrollToTop();
   };
   return (
     <section className="productAbout" id="top">
@@ -39,7 +47,7 @@ export default function ProductFull() {
             <img src={product.image} alt={product.title} />
             <div className="producfullContent">
               <strong>
-                <h2>{product.title}</h2>
+                <h2 style={{fontWeight : "900"}}>{product.title}</h2>
               </strong>
               <h5>{product.description}</h5>
               <strong>
