@@ -72,7 +72,7 @@ export default function ProductFull() {
                   className="categoryFullImg"
                   onClick={() => handleGoTo(item)}
                 />
-                <h5>{item.title.slice(0,35)}...</h5>
+                <h5>{item.title.slice(0,20)}...</h5>
             </div>
           ))}
         </div>

@@ -15,6 +15,7 @@ export default function Products() {
 
   useEffect(() => {
     dispatch(fetchProducts());
+    
   }, []);
 
   useEffect(() => {

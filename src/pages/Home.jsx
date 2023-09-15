@@ -8,9 +8,7 @@ export default function Home() {
     <>
       <section>
         <Hero />
-        <Products />
-        
-        
+        <Products />   
       </section>
     </>
   );

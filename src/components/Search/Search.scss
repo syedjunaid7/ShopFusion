@@ -1,0 +1,30 @@
+.searchBox{
+    position: fixed;
+    top: 10;
+    height: 30vh;
+    overflow-x: hidden;
+    width: 40%;
+    z-index: 3;
+    padding: 0 1rem;
+    right:10rem;
+    background-color: white;
+
+    .searchBoxImg{
+        display: flex;
+        justify-content: flex-start;
+        gap: 1rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.285);
+        padding: 1rem 0;
+        &:hover{
+            cursor: pointer;
+        }
+        p{
+            &:hover{
+                font-weight: 900;
+            }
+        }
+    }
+}
+.searchImg{
+    width: 2rem;
+}

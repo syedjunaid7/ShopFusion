@@ -8,7 +8,7 @@ export default function () {
   return (
     <section className="hero">
       <div id="carouselExampleCaptions" class="carousel slide">
-        <div class="carousel-indicators">
+        <div className="carousel-indicators">
           <button
             type="button"
             data-bs-target="#carouselExampleCaptions"
@@ -36,11 +36,11 @@ export default function () {
             aria-label="Slide 3"
           ></button>
         </div>   
-          <div class="carousel-inner">
+          <div className="carousel-inner">
           {imageSlider.map((item, id) => (
-            <div class={`carousel-item ${id === 0 ? 'active' : ''}`} key={id}>
+            <div className={`carousel-item ${id === 0 ? 'active' : ''}`} key={id}>
               <img src={item.imgSrc} class="d-block w-100" alt="..." />
-              <div class="carousel-caption d-none d-md-block">
+              <div className="carousel-caption d-none d-md-block">
                 <h5>{item.Header}</h5>
                 <p>
                   {item.Paragraph}

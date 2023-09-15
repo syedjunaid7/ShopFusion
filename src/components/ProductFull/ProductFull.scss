@@ -53,9 +53,10 @@
   .productFullCardBoxIn {
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
     width: 27%;
-    height: 16.5rem;
+    height: 15rem;
     border: 1px solid;
     padding: 1rem;
     gap: 1rem;
