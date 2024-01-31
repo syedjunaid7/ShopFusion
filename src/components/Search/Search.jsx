@@ -16,9 +16,11 @@ export default function Search({ inputValue, setInputValue }) {
   const dispatch = useDispatch();
 
   const debounceFunc = (filterData) => {
-    setTimeout(() => {
+    let timer;
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
       setSearchData(filterData);
-    }, 1000);
+    }, 2000);
   };
 
   const handleGoTo = (product) => {
@@ -38,9 +40,7 @@ export default function Search({ inputValue, setInputValue }) {
         setIsSearchBoxVisible(false);
       }
     }
-
     document.addEventListener("mousedown", handleClickOutside);
-
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
@@ -79,7 +79,7 @@ export default function Search({ inputValue, setInputValue }) {
           </div>
         ))
       ) : (
-        <Skeleton count={4} />
+        <Skeleton count={8} />
       )}
     </div>
   );
